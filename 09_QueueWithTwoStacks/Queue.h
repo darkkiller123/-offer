@@ -54,6 +54,7 @@ template<typename T> void CQueue<T>::appendTail(const T& element)
 
 template<typename T> T CQueue<T>::deleteHead()
 {
+    logic_error ex("queue is empty");
     if(stack2.size()<= 0)
     {
         while(stack1.size()>0)
@@ -65,7 +66,7 @@ template<typename T> T CQueue<T>::deleteHead()
     }
 
     if(stack2.size() == 0)
-        throw new exception("queue is empty");
+        throw new exception(ex);
 
     T head = stack2.top();
     stack2.pop();

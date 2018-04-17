@@ -32,6 +32,8 @@ BinaryTreeNode* GetNext(BinaryTreeNode* pNode)
         return nullptr;
 
     BinaryTreeNode* pNext = nullptr;
+
+    // 当前节点还有右子树，那么毫无疑问返回右子树的左分支最左节点。
     if(pNode->m_pRight != nullptr)
     {
         BinaryTreeNode* pRight = pNode->m_pRight;
@@ -40,6 +42,7 @@ BinaryTreeNode* GetNext(BinaryTreeNode* pNode)
 
         pNext = pRight;
     }
+    // 没有右子树，只能继续往上爬了，这时候找父辈的左分支最左节点。
     else if(pNode->m_pParent != nullptr)
     {
         BinaryTreeNode* pCurrent = pNode;
