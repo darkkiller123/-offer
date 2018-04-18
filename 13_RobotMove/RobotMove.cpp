@@ -18,6 +18,10 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 大于k的格子。例如，当k为18时，机器人能够进入方格(35, 37)，因为3+5+3+7=18。
 // 但它不能进入方格(35, 38)，因为3+5+3+8=19。请问该机器人能够到达多少个格子？
 
+// 这条题不需要递归吧？遍历就ok了，这是最简单的写法了。。。。
+// 要获取遍历路径才要搞递归。。。。
+
+
 #include <cstdio>
 
 int movingCountCore(int threshold, int rows, int cols, int row, int col, bool* visited);

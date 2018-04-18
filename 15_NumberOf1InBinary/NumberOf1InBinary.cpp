@@ -18,11 +18,13 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 
 #include <cstdio>
 
+// 不断计算flag 的每一位
 int NumberOf1_Solution1(int n)
 {
     int count = 0;
     unsigned int flag = 1;
-    while (flag)
+    // for (int i = 0; i < sizeof(n) * 8; ++i ) 
+    while (flag) //核心 10000000000 < 1 如果溢出了会变0 讲道理还不如 for 呢
     {
         if (n & flag)
             count++;
@@ -33,6 +35,7 @@ int NumberOf1_Solution1(int n)
     return count;
 }
 
+// 意思不断将最后一位置0
 int NumberOf1_Solution2(int n)
 {
     int count = 0;
