@@ -18,6 +18,20 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 // 积是多少？例如当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此
 // 时得到最大的乘积18。
 
+// 假设不需要正整数，并且m固定，那么可以数学证明。。。。
+// 1、分治法做太累了，基本不现实 自上往下。。。类似直接证明找规律。。。
+// 2、试下自下往上，假设已知局部信息，求全局。。类似数学归纳法
+
+// 3、找出规律，，，显然越来越多的3越好，拿不到3情况才拿2?
+// 数学问题 2^(常量/2) 和 3^(常量/2) 比较大小
+// 抽象出来就是 n^(x/n)-(n-1)^(x/(n-1)) 的递增性
+// 也就是 (n^(x/n)) / ((n-1)^(x/(n-1)) > 1
+// 两边取对数再除以x
+// 转化成lg(n)/n - lg(n-1)/(n-1) > 0
+// 也就是lg(n)/n 的单调性。。。
+// 这里可以求导。。。
+// 也可以试图画图，先画lg(n)图。推测先增后降低。然后枚举。
+
 #include <iostream>
 #include <cmath>
 
@@ -31,17 +45,18 @@ int maxProductAfterCutting_solution1(int length)
     if(length == 3)
         return 2;
 
+    // 自下往上，动态规划
     int* products = new int[length + 1];
-    products[0] = 0;
-    products[1] = 1;
-    products[2] = 2;
-    products[3] = 3;
+    products[0] = 0;// 绳子长度为0时候，乘积为0
+    products[1] = 1;// 绳子长度为1时候，乘积为1
+    products[2] = 2;// 绳子长度为2时候，乘积最大值为2
+    products[3] = 3;// 绳子长度为3时候，乘积最大值为3
 
     int max = 0;
     for(int i = 4; i <= length; ++i)
     {
         max = 0;
-        for(int j = 1; j <= i / 2; ++j)
+        for(int j = 1; j <= i / 2; ++j) //一半，因为 j i-j是对称的...
         {
             int product = products[j] * products[i - j];
             if(max < product)
