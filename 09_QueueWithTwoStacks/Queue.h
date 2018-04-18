@@ -52,6 +52,7 @@ template<typename T> void CQueue<T>::appendTail(const T& element)
     stack1.push(element);
 } 
 
+// 取元素,全部取出来。。。取第一个
 template<typename T> T CQueue<T>::deleteHead()
 {
     logic_error ex("queue is empty");

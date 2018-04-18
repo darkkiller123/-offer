@@ -22,6 +22,7 @@ https://github.com/zhedahht/CodingInterviewChinese2/blob/master/LICENSE.txt)
 
 int MinInOrder(int* numbers, int index1, int index2);
 
+// 分治法。。
 int Min(int* numbers, int length)
 {
     if(numbers == nullptr || length <= 0)
